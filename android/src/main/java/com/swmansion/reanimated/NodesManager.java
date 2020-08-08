@@ -114,7 +114,8 @@ public class NodesManager implements EventDispatcherListener {
   }
 
   public static NodesManager getInstanceWithContext(ReactContext context){
-    if(sInstance == null || sInstance.mContext != context) {
+    if(sInstance == null) {
+      // Throughout life of an app context remains the same as long as same React instance is running. 
       sInstance = new NodesManager(context);
       sInstance.mUIManager.getEventDispatcher().addListener(sInstance);
     }
